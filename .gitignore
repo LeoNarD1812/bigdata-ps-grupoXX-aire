@@ -1,0 +1,17 @@
+# Datos (nunca subir datasets grandes)
+data/
+artifacts/
+*.csv
+*.parquet/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Docker
+*.log
