@@ -27,29 +27,7 @@ El caso de negocio (predicción de retrasos y congestión aérea) requiere tanto
 
 ### Diagrama
 
-```
-┌─────────────────────┐
-│    Fuente de datos   │
-│    Kaggle 2024        │
-│    7M vuelos           │
-└──────────┬──────────┘
-           │
-     ┌─────┴─────┐
-     │           │
-┌────▼────┐ ┌───▼────┐
-│  Batch   │ │  Speed  │
-│  Layer   │ │  Layer  │
-│  (U1)    │ │  (U2)   │
-│ PySpark  │ │ Kafka+  │
-│          │ │ Spark   │
-└────┬────┘ └───┬────┘
-     │           │
-┌────▼───────────▼────┐
-│    Serving Layer      │
-│  Notebooks (U1)        │
-│  Grafana (U2)          │
-└─────────────────────┘
-```
+![Diagrama de Arquitectura](../capturas/leonardo/arquitectura.jpg)
 
 ### Justificación
 
