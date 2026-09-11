@@ -1,6 +1,7 @@
 # Datos (nunca subir datasets grandes)
 data/
-artifacts/
+artifacts/*
+!artifacts/.gitkeep
 *.csv
 *.parquet/
 
