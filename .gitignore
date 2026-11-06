@@ -16,3 +16,29 @@ __pycache__/
 
 # Docker
 *.log
+
+spark/.env
+# Credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Datos y respaldos pesados
+respaldo-migracion/
+artifacts/
+checkpoints/
+*.parquet
+*.tar
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/

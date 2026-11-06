@@ -1,0 +1,61 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sensor aereo simulado V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "schemaVersion",
+    "deviceId",
+    "sequence",
+    "eventTime",
+    "altitude",
+    "velocity",
+    "verticalRate",
+    "source"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventType": {
+      "const": "sensor.aereo.lectura"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "deviceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "eventTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "altitude": {
+      "type": "number",
+      "minimum": -500,
+      "maximum": 20000
+    },
+    "velocity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 400
+    },
+    "verticalRate": {
+      "type": "number",
+      "minimum": -100,
+      "maximum": 100
+    },
+    "source": {
+      "const": "simulacion_mqtt"
+    }
+  }
+}

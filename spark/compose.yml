@@ -1,0 +1,32 @@
+
+name: aire-bigdata-spark
+
+services:
+  pyspark:
+    container_name: aire-pyspark
+
+    build:
+      context: ../../lambda26/pyspark
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:4488:8888"
+      - "127.0.0.1:4042:4040"
+
+    volumes:
+      - ../:/workspace
+
+    working_dir: /workspace
+
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:?Configurar token en .env}
+
+    networks:
+      - lambda26-kafka-net
+
+networks:
+  lambda26-kafka-net:
+    external: true
+    name: lambda26-kafka-net

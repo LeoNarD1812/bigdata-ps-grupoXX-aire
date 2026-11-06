@@ -1,0 +1,18 @@
+S10 CORREGIDO — Proyecto aeronaves Perú — 06/11/2026
+
+1. Abrir S10_Leonardo_Peru.ipynb y S10_Jhonatan_Peru.ipynb en Jupyter http://localhost:4488
+2. Parquet necesario: /workspace/artifacts/s10/peru_historico_unificado (fuente real ADSB.lol Perú 2024-12-26..30).
+3. Ejecutar SECUENCIALMENTE cada notebook, solo hasta la sección 7 al entrenar.
+4. Partición: train 26–28; val 29; test 30 de diciembre de 2024.
+5. Se selecciona modelo exclusivamente por validación, test final sin usarlo para elegir.
+6. Cada notebook exporta comparativa CSV, evaluación Parquet, selección JSON y PipelineModel MLlib (incluso si baseline gana, en ese caso la inferencia usa baseline).
+7. La sección 8 es LIVE OpenSky y está INICIAR_STREAM=False. Se requiere productor real activo y conector Kafka para arrancarla. NO arranques dos consultas iguales con el mismo checkpoint.
+8. La sección 9 permite verificar en modo batch los 184766 eventos Kafka ya existentes sin republicarlos (LEER_KAFKA_HISTORICO=True).
+9. Los eventos de 2024 reproducidos con eventTime en noviembre 2026 están identificados como historicalReplay; no confundir con aviones reales actuales.
+10. S12 NO se completa solamente con notebooks: faltan paneles S11 batch/live lado a lado, KPI negocio, comparación del error medido en vivo, ingesta empresarial e IoT, costos, watermark y checkpoint demostrados, y sustentación individual.
+
+NOTAS:
+- Es imprescindible comprobar métricas reales tras ejecutar. No están inventadas.
+- Leonardo predice conteos APROXIMADOS de ICAO24 observados por ventana de 5 minutos, no número real total de aeronaves sobre Perú.
+- Jhonatan predice velocidad de la siguiente observación de la misma aeronave (separación 1-90 s), no 60 segundos fijos.
+- Esta entrega contiene código para inferencia OpenSky en directo que debe ponerse a prueba con nuevos eventos; no implica que la inferencia ni los dashboards ya se hayan validado.

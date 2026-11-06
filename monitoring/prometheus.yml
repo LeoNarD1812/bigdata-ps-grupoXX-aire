@@ -1,0 +1,25 @@
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets:
+          - "localhost:9090"
+
+  - job_name: "kafka-exporter"
+    static_configs:
+      - targets:
+          - "kafka-exporter:9308"
+
+  - job_name: "spark-aeronaves"
+    static_configs:
+      - targets:
+          - "aire-pyspark:8000"
+  - job_name: pushgateway-s11
+    honor_labels: true
+    static_configs:
+      - targets: ['aire-pushgateway:9091']

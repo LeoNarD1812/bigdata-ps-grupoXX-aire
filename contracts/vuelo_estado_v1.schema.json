@@ -1,0 +1,55 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/vuelo_estado_v1.schema.json",
+  "title": "Evento de actualización de vuelo V1",
+  "description": "Contrato de evento operativo de vuelo. Los datos de prueba son simulados.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "schemaVersion",
+    "flightId",
+    "airportCode",
+    "status",
+    "eventTime",
+    "source"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eventType": {
+      "const": "vuelo.estado_actualizado"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "flightId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "airportCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{4}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PROGRAMADO",
+        "EN_VUELO",
+        "ATERRIZADO"
+      ]
+    },
+    "eventTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["simulacion", "operaciones"]
+    }
+  }
+}
